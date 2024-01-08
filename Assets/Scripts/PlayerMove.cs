@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     // Update is called once per frame
+    
     void Update()
     {
         float hi;
@@ -45,6 +46,7 @@ public class PlayerMove : MonoBehaviour
                 hi = 0;
             }
         }
+        
         rb.AddForce(transform.right * hi * speed);
         float vi;
         if(isPlayer1){
@@ -83,6 +85,8 @@ public class PlayerMove : MonoBehaviour
             canJump = false;
             rb.AddForce(Vector3.up * 15, ForceMode.Impulse);
         }
+
+        Debug.Log(rb.velocity);
     }
 
     public void SetCheckpoint(Vector3 cp){
