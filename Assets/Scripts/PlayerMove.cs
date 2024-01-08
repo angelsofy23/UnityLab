@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerMove : MonoBehaviour
 {
     Vector3 checkpoint;
     Rigidbody rb;    
     public float speed = 7;
     public bool canJump = true;
+    public GameObject winnerend;
+    public TextMeshProUGUI winner;
+
     
     public bool isPlayer1;
     // Start is called before the first frame update
     void Start()
     {
         
-        Physics.gravity *= 3;
+        Physics.gravity = new Vector3(0, -90, 0);
+        Debug.Log(Physics.gravity);
         checkpoint = transform.position;
         rb = GetComponent<Rigidbody>();
     }
@@ -100,9 +104,15 @@ public class PlayerMove : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Finish")){
             if(isPlayer1)
-                Debug.Log("Player 1 wins");
+            {
+                winner.text = "Player 1 wins!";
+                winnerend.SetActive(true);
+            }
             else
-                Debug.Log("Player 2 wins");
+            {
+                winner.text = "Player 2 wins!";
+                winnerend.SetActive(true);
+            }
 
             Time.timeScale = 0; // Para o tempo
             
