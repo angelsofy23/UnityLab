@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "UnityLab.sln"
+    "dotnet.defaultSolution": "UnityLab-afeafe3ec5c9d06e9210456ad867ee3a705d74eb.sln"
 }
