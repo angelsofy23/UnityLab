@@ -24,10 +24,10 @@ public class PlayerMove : MonoBehaviour
     {
         float hi;
         if(isPlayer1){
-            if(Input.GetKey(KeyCode.A)){
+            if(Input.GetKey(KeyCode.W)){
                 hi = -1;
             }
-            else if(Input.GetKey(KeyCode.D)){
+            else if(Input.GetKey(KeyCode.S)){
                 hi = 1;
             }
             else{
@@ -35,10 +35,10 @@ public class PlayerMove : MonoBehaviour
             }
         
         }else{
-            if(Input.GetKey(KeyCode.LeftArrow)){
+            if(Input.GetKey(KeyCode.UpArrow)){
                 hi = -1;
             }
-            else if(Input.GetKey(KeyCode.RightArrow)){
+            else if(Input.GetKey(KeyCode.DownArrow)){
                 hi = 1;
             }
             else{
@@ -48,10 +48,10 @@ public class PlayerMove : MonoBehaviour
         rb.AddForce(transform.right * hi * speed);
         float vi;
         if(isPlayer1){
-            if(Input.GetKey(KeyCode.W)){
+            if(Input.GetKey(KeyCode.D)){
                 vi = 1;
             }
-            else if(Input.GetKey(KeyCode.S)){
+            else if(Input.GetKey(KeyCode.A)){
                 vi = -1;
             }
             else{
@@ -59,10 +59,10 @@ public class PlayerMove : MonoBehaviour
             }
         
         }else{
-            if(Input.GetKey(KeyCode.UpArrow)){
+            if(Input.GetKey(KeyCode.LeftArrow)){
                 vi = 1;
             }
-            else if(Input.GetKey(KeyCode.DownArrow)){
+            else if(Input.GetKey(KeyCode.RightArrow)){
                 vi = -1;
             }
             else{
