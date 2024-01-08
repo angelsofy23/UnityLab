@@ -10,5 +10,9 @@ public class DestroyAfter : MonoBehaviour
     {
         Destroy(gameObject, time);   
     }
-
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.CompareTag("Respawn")){
+            Destroy(gameObject);
+        }
+    }
 }
