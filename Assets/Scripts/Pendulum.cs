@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Pendulum : MonoBehaviour
 {
-	[SerializeField] float speed;
-	public float limit;
+	public float speed = 1.5f;
+	public float limit = 75f; 
 
+    // Update is called once per frame
     void Update()
     {
 		float angle = limit * Mathf.Sin(Time.time * speed);
