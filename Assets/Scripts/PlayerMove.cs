@@ -1,12 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 public class PlayerMove : MonoBehaviour
 {
     Vector3 checkpoint;
     Rigidbody rb;    
     public float speed = 7;
+    public float speedBoost_1 = 1;
+    public float speedBoost_2 = 1;
+    public float jumpBoost_1 = 1;
+    public float jumpBoost_2 = 1;
     public bool canJump = true;
     public GameObject winnerend;
     public TextMeshProUGUI winner;
@@ -29,11 +32,11 @@ public class PlayerMove : MonoBehaviour
     void Update(){
         if(isPlayer1 && Input.GetKeyDown(KeyCode.Space) && canJump){
             canJump = false;
-            rb.AddForce(Vector3.up * 15, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 15 * jumpBoost_1, ForceMode.Impulse);
         }
         if(!isPlayer1 && Input.GetKeyDown(KeyCode.RightControl) && canJump){
             canJump = false;
-            rb.AddForce(Vector3.up * 15, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 15 * jumpBoost_2, ForceMode.Impulse);
         }
         if(isPlayer1){
             if(Input.GetKey(KeyCode.W)){
@@ -83,10 +86,18 @@ public class PlayerMove : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.AddForce(transform.right * hi * speed);
-        rb.AddForce(transform.forward * vi * speed);
-        if(transform.position.y < -4f){
-            transform.position = checkpoint;
+        if(isPlayer1){
+            rb.AddForce(transform.right * hi * speed * speedBoost_1);
+            rb.AddForce(transform.forward * vi * speed * speedBoost_1);
+            if(transform.position.y < -4f){
+                transform.position = checkpoint;
+            }
+        }else{
+            rb.AddForce(transform.right * hi * speed * speedBoost_2);
+            rb.AddForce(transform.forward * vi * speed * speedBoost_2);
+            if(transform.position.y < -4f){
+                transform.position = checkpoint;
+            }
         }
     }
 
@@ -116,6 +127,41 @@ public class PlayerMove : MonoBehaviour
 
             Time.timeScale = 0; // Para o tempo
             
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("Speed")){
+            StartCoroutine(speedBoost());
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.CompareTag("JumpBoost")){
+            StartCoroutine(jumpBoost());
+            Destroy(other.gameObject);
+        }
+    }
+
+    IEnumerator speedBoost(){
+        if(isPlayer1){
+            speedBoost_1 = 2;
+            yield return new WaitForSeconds(5);
+            speedBoost_1 = 1;
+        }else{
+            speedBoost_2 = 2;
+            yield return new WaitForSeconds(5);
+            speedBoost_2 = 1;
+        }
+    }
+
+    IEnumerator jumpBoost(){
+        if(isPlayer1){
+            jumpBoost_1 = 4;
+            yield return new WaitForSeconds(5);
+            jumpBoost_1 = 1;
+        }else{
+            jumpBoost_2 = 4;
+            yield return new WaitForSeconds(5);
+            jumpBoost_2 = 1;
         }
     }
 }
