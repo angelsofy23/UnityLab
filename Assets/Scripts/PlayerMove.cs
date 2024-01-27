@@ -14,11 +14,15 @@ public class PlayerMove : MonoBehaviour
     public GameObject winnerend;
     public TextMeshProUGUI winner;
 
-    
+    public PlayerMove player1;
+    public PlayerMove player2;
+
     public bool isPlayer1;
     // Start is called before the first frame update
     void Start()
     {
+        player1 = GameObject.Find("Player1").GetComponent<PlayerMove>();
+        player2 = GameObject.Find("Player2").GetComponent<PlayerMove>();
         
         Physics.gravity = new Vector3(0, -90, 0);
         Debug.Log(Physics.gravity);
@@ -139,6 +143,10 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(jumpBoost());
             Destroy(other.gameObject);
         }
+        if(other.gameObject.CompareTag("Stun")){
+            StartCoroutine(stun());
+            Destroy(other.gameObject);
+        }
     }
 
     IEnumerator speedBoost(){
@@ -162,6 +170,18 @@ public class PlayerMove : MonoBehaviour
             jumpBoost_2 = 4;
             yield return new WaitForSeconds(5);
             jumpBoost_2 = 1;
+        }
+    }
+
+    IEnumerator stun(){
+        if(isPlayer1){
+            player2.speedBoost_2 = 0;
+            yield return new WaitForSeconds(3);
+            player2.speedBoost_2 = 1;
+        }else{
+            player1.speedBoost_1 = 0;
+            yield return new WaitForSeconds(3);
+            player1.speedBoost_1 = 1;
         }
     }
 }
