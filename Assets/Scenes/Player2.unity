@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: edf11a828e906944782e1c4869297c2b, type: 2}
     - target: {fileID: 2086647881361348134, guid: 943c29498ab959842b6d7bee1f42370e, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 2086647881361348134, guid: 943c29498ab959842b6d7bee1f42370e, type: 3}
       propertyPath: m_TagString
@@ -1654,7 +1654,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e72e1d777831b144fb695b0821b74e4e, type: 2}
     - target: {fileID: 2086647881361348134, guid: 943c29498ab959842b6d7bee1f42370e, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 2086647881361348134, guid: 943c29498ab959842b6d7bee1f42370e, type: 3}
       propertyPath: m_TagString

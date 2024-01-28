@@ -22,12 +22,15 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         player1 = GameObject.Find("Player1").GetComponent<PlayerMove>();
-        player2 = GameObject.Find("Player2").GetComponent<PlayerMove>();
-        
         Physics.gravity = new Vector3(0, -90, 0);
-        Debug.Log(Physics.gravity);
         checkpoint = transform.position;
         rb = GetComponent<Rigidbody>();
+
+        try{
+            player2 = GameObject.Find("Player2").GetComponent<PlayerMove>();
+        }catch{
+            Debug.Log("No Player 2");
+        }
     }
     
     float hi;
