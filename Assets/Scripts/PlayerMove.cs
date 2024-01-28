@@ -1,10 +1,12 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System;
 public class PlayerMove : MonoBehaviour
 {
     Vector3 checkpoint;
-    Rigidbody rb;    
+    Rigidbody rb;
+    public float timerSec;    
     public float speed = 7;
     public float speedBoost_1 = 1;
     public float speedBoost_2 = 1;
@@ -13,6 +15,7 @@ public class PlayerMove : MonoBehaviour
     public bool canJump = true;
     public GameObject winnerend;
     public TextMeshProUGUI winner;
+    public TextMeshProUGUI timer;
 
     public PlayerMove player1;
     public PlayerMove player2;
@@ -25,11 +28,18 @@ public class PlayerMove : MonoBehaviour
         Physics.gravity = new Vector3(0, -90, 0);
         checkpoint = transform.position;
         rb = GetComponent<Rigidbody>();
-
+        timerSec = 0;
         try{
             player2 = GameObject.Find("Player2").GetComponent<PlayerMove>();
         }catch{
+            player2 = null;
             Debug.Log("No Player 2");
+        }
+        try{
+            timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        }catch{
+            timer = null;
+            Debug.Log("No Timer");
         }
     }
     
@@ -90,6 +100,10 @@ public class PlayerMove : MonoBehaviour
                 vi = 0;
             }
         }
+        if(timer != null){
+            timerSec += Time.deltaTime;
+            timer.text = "Time: " + Mathf.Round(timerSec*10)/10;
+        }
     }
     void FixedUpdate()
     {
@@ -123,7 +137,11 @@ public class PlayerMove : MonoBehaviour
         if(other.gameObject.CompareTag("Finish")){
             if(isPlayer1)
             {
-                winner.text = "Player 1 wins!";
+                if(player2 != null)
+                    winner.text = "Player 1 wins!";
+                else
+                    winner.text = "You win! Time: " + Mathf.Round(timerSec*10)/10 + "s";
+                
                 winnerend.SetActive(true);
             }
             else

@@ -1707,11 +1707,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2353002, y: 1.6789577, z: 1.0807111}
   m_Center: {x: -0.10006963, y: -0.04907889, z: 0.040355504}
---- !u!4 &393452746 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2881939174071241964, guid: 0769af7c3617b9844a718e574405ce84, type: 3}
-  m_PrefabInstance: {fileID: 1094747216}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &407120976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,8 +2517,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 600901569}
-        m_TargetAssemblyTypeName: Repetir, Assembly-CSharp
-        m_MethodName: RepetirGame
+        m_TargetAssemblyTypeName: ButtonsBehavior, Assembly-CSharp
+        m_MethodName: RepetirPlayer2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2580,9 +2575,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 600901563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 706833decfd49cd4bbe23011337cd07a, type: 3}
+  m_Script: {fileID: 11500000, guid: 123c2f8c9d30fd14d8203ca872144848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chooseplayers: {fileID: 0}
+  menu: {fileID: 0}
+  credits: {fileID: 0}
+  menupausa: {fileID: 0}
 --- !u!1001 &604167179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3152,7 +3151,7 @@ RectTransform:
   m_Children:
   - {fileID: 1733740732}
   - {fileID: 1795953953}
-  m_Father: {fileID: 393452746}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3930,10 +3929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2881939174071241964, guid: 0769af7c3617b9844a718e574405ce84, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 902762240}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6426786282197773727, guid: 0769af7c3617b9844a718e574405ce84, type: 3}
       insertIndex: -1
@@ -4320,6 +4316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278c4c055ad483d4d8da5ed52239e143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerSec: 0
   speed: 70
   speedBoost_1: 1
   speedBoost_2: 1
@@ -4328,6 +4325,7 @@ MonoBehaviour:
   canJump: 1
   winnerend: {fileID: 998015909}
   winner: {fileID: 1441830808}
+  timer: {fileID: 0}
   player1: {fileID: 0}
   player2: {fileID: 0}
   isPlayer1: 0
@@ -5284,6 +5282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278c4c055ad483d4d8da5ed52239e143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerSec: 0
   speed: 70
   speedBoost_1: 1
   speedBoost_2: 1
@@ -5292,6 +5291,7 @@ MonoBehaviour:
   canJump: 1
   winnerend: {fileID: 998015909}
   winner: {fileID: 1441830808}
+  timer: {fileID: 0}
   player1: {fileID: 0}
   player2: {fileID: 0}
   isPlayer1: 1
@@ -8275,3 +8275,4 @@ SceneRoots:
   - {fileID: 672176306}
   - {fileID: 1765794621}
   - {fileID: 1094747216}
+  - {fileID: 902762240}
