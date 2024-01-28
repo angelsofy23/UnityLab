@@ -8,6 +8,7 @@ TagManager:
   - Speed
   - JumpBoost
   - Stun
+  - Slow
   layers:
   - Default
   - TransparentFX

@@ -168,16 +168,21 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(stun());
             Destroy(other.gameObject);
         }
+
+         if(other.gameObject.CompareTag("Slow")){
+            StartCoroutine(slow());
+            Destroy(other.gameObject);
+        }
     }
 
     IEnumerator speedBoost(){
         if(isPlayer1){
             speedBoost_1 = 2;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             speedBoost_1 = 1;
         }else{
             speedBoost_2 = 2;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             speedBoost_2 = 1;
         }
     }
@@ -185,11 +190,11 @@ public class PlayerMove : MonoBehaviour
     IEnumerator jumpBoost(){
         if(isPlayer1){
             jumpBoost_1 = 4;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             jumpBoost_1 = 1;
         }else{
             jumpBoost_2 = 4;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             jumpBoost_2 = 1;
         }
     }
@@ -201,6 +206,18 @@ public class PlayerMove : MonoBehaviour
             player2.speedBoost_2 = 1;
         }else{
             player1.speedBoost_1 = 0;
+            yield return new WaitForSeconds(3);
+            player1.speedBoost_1 = 1;
+        }
+    }
+
+    IEnumerator slow(){
+        if(isPlayer1){
+            player2.speedBoost_2 = 0.5f;
+            yield return new WaitForSeconds(3);
+            player2.speedBoost_2 = 1;
+        }else{
+            player1.speedBoost_1 = 0.5f;
             yield return new WaitForSeconds(3);
             player1.speedBoost_1 = 1;
         }
